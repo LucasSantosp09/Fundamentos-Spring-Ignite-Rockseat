@@ -1,8 +1,10 @@
 package br.com.devlucassantos.main.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/primeiraController")
@@ -31,6 +33,11 @@ public class PrimeiraController {
     @PostMapping("/metodoComHeaders")
     public String meotodoComBodyParams(@RequestHeader ("name") String name){
         return "metodoComHeaders " + name;
+    }
+
+    @GetMapping("/metodoReponseEntitu")
+    public ResponseEntity<Object> metodoReponseEntitu(){
+        return ResponseEntity.status(400).body("mensagem erro");
     }
     record Usuario(String username){}
 }
